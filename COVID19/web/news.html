@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="js/jquery-3.4.1.min.js"></script>
+
+    <title>热点新闻</title>
+</head>
+<body>
+
+<input type="button" onclick="requestData()" value="新闻中心">
+    <table id="tab">
+        <tr>
+            <th>热点新闻</th>
+        </tr>
+
+    </table>
+
+
+    <script type="text/javascript">
+
+    function requestData(){
+        $.ajax({
+            url: "http://101.37.83.223:8080/newsServlet",
+            type: "post",
+            dataType: "json",
+            success: function (jsonlist) {
+                /*这个方法里是ajax发送请求成功之后执行的代码*/
+                showData(jsonlist);//我们仅做数据展示
+            },
+            error: function () {
+                alert("出错啦");
+            }
+        });
+    }
+
+    //展示数据
+    function showData(jsonlist) {
+        var str = "";//定义用于拼接的字符串
+        for (var i = 0; i < jsonlist.length; i++) {
+            //拼接表格的行和列
+            str = "<tr><td><a href='" + jsonlist[i].newsurl + "'>" +jsonlist[i].title+ "</a></td></tr>";
+            //追加到table中
+            $("#tab").append(str);
+        }
+    }
+</script>
+</body>
+</html>
