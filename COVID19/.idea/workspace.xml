@@ -287,6 +287,12 @@
               <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="domain" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="COVID19" type="b2602c69:ProjectViewProjectNode" />
+              <item name="COVID19" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="servlet" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
@@ -609,7 +615,7 @@
       <workItem from="1582389608895" duration="34662000" />
       <workItem from="1583834024373" duration="875000" />
       <workItem from="1583834959938" duration="189000" />
-      <workItem from="1583835370692" duration="1861000" />
+      <workItem from="1583835370692" duration="2470000" />
     </task>
     <servers />
   </component>
@@ -628,7 +634,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37587000" />
+    <option name="totallyTimeSpent" value="38196000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="239" y="6" width="1109" height="827" extended-state="1" />
