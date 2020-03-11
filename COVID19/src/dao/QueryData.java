@@ -239,4 +239,33 @@ public class QueryData {
         return province_todays;
     }
 
+    /**
+     * 根据城市名，展示每天的数据。
+     * */
+    public List<Cities_Today> quaryCitiesToday(String citie) {
+        String sql = "SELECT name ,time ,confirm,cured , dead from cities where  name =? ORDER BY time ASC;";
+        List<Cities_Today> cities_todays = template.query(sql, new BeanPropertyRowMapper<>(Cities_Today.class), citie);
+        //再将新增数据，封装进去
+        int confirm_yesterday = 0;
+        int cured_yesterday = 0;
+        int dead_yesterday = 0;
+        for (Cities_Today p : cities_todays) {
+            p.setConfirm_today(p.getConfirm()-confirm_yesterday);
+            p.setCured_today(p.getCured()-cured_yesterday);
+            p.setDead_today(p.getDead()-dead_yesterday);
+
+            confirm_yesterday = p.getConfirm();
+            cured_yesterday = p.getCured();
+            dead_yesterday = p.getDead();
+
+        }
+        //手动修改第一个数据的新增数
+        Cities_Today cities_first = cities_todays.get(0);
+        cities_first.setConfirm_today(0);
+        cities_first.setCured_today(0);
+        cities_first.setDead_today(0);
+        cities_todays.set(0,cities_first);
+        //返回查询结果
+        return cities_todays;
+    }
 }
